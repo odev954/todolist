@@ -9,6 +9,8 @@ function TaskStatusButton()
             button.setAttribute('completed', 'false');
             button.addEventListener('click', click);
             button.classList.add(...classList); //style component
+
+            return button;
         },
         click: () => {
             let completed = this.getAttribute('completed') === 'true';
