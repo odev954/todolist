@@ -4,14 +4,13 @@ function Task(description, title, due, completed)
         description: description,
         title: title,
         due: due,
-        completed: completed,
-        view: function (parentElementId, classList)
+        render: function (parentElementId, classList)
         {
-            container = document.createElement('div');
-            title = document.createElement('h2');
-            description = document.createElement('p');
-            due = document.createElement('p');
-            //statusButton = TaskStatusButton(completed=completed);
+            let container = document.createElement('div');
+            let title = document.createElement('h2');
+            let description = document.createElement('p');
+            let due = document.createElement('p');
+            let statusButton = TaskStatusButton();
 
             container.classList.add(...classList); //style component
             
@@ -26,7 +25,7 @@ function Task(description, title, due, completed)
             container.appendChild(title);
             container.appendChild(description);
             container.appendChild(due);
-            //container.appendChild(statusButton);
+            container.appendChild(statusButton);
             document.getElementById(parentElementId).appendChild(container);
         }
     }
