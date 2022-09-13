@@ -5,11 +5,28 @@ function Task(description, title, due, completed)
         title: title,
         due: due,
         completed: completed,
-        view: function (taskData, parentElementId, classList)
+        view: function (parentElementId, classList)
         {
             container = document.createElement('div');
-            container.classList.add(...classList);
+            title = document.createElement('h2');
+            description = document.createElement('p');
+            due = document.createElement('p');
+            //statusButton = TaskStatusButton(completed=completed);
 
+            container.classList.add(...classList); //style component
+            
+            //set content
+            if(this.due instanceof Date)
+            {
+                due.textContent = this.due.toDateString();
+            }
+            title.textContent = this.title;
+            description.textContent = this.description;
+            
+            container.appendChild(title);
+            container.appendChild(description);
+            container.appendChild(due);
+            //container.appendChild(statusButton);
             document.getElementById(parentElementId).appendChild(container);
         }
     }
