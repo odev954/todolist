@@ -1,39 +1,9 @@
-class Task
+function Task(description, title, due, completed) 
 {
-    constructor(description, title, due) 
-    {
-        this.description = description;
-        this.title = title;
-        this.due = due;
-    }
-
-    setDescription(newDescription)
-    {
-        this.description = newDescription;
-    }
-
-    setTitle(newTitle)
-    {
-        this.title = newTitle;
-    }
-
-    setDue(newDue)
-    {
-        this.due = newDue;
-    }
-
-    getDescription(newDescription)
-    {
-        return this.description;
-    }
-
-    getTitle(newTitle)
-    {
-        return this.title;
-    }
-
-    getDue(newDue)
-    {
-        return this.due;
+    return {
+        description: description,
+        title: title,
+        due: due,
+        completed: completed
     }
 }
