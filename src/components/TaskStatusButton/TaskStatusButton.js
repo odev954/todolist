@@ -7,13 +7,15 @@ function TaskStatusButton()
             let button = document.createElement('button');
             
             button.setAttribute('completed', 'false');
-            button.addEventListener('click', click);
+            button.setAttribute('styles', JSON.stringify(styles));
+            button.addEventListener('click', this.click);
             button.classList.add(...classList); //style component
 
             return button;
         },
-        click: () => {
+        click: function() {
             let completed = this.getAttribute('completed') === 'true';
+            let styles = JSON.parse(this.getAttribute('styles'));
             let classList = styles[!completed ? 'done' : 'ongoing'];
 
             this.setAttribute('completed', (!completed).toString());
