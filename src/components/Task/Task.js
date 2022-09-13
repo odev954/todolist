@@ -22,11 +22,11 @@ function Task(description, title, due, completed)
             title.textContent = this.title;
             description.textContent = this.description;
             
-            container.appendChild(title);
-            container.appendChild(description);
-            container.appendChild(due);
-            container.appendChild(statusButton);
-            document.getElementById(parentElementId).appendChild(container);
+            container.append(title);
+            container.append(description);
+            container.append(due);
+            container.append(statusButton);
+            document.getElementById(parentElementId).append(container);
         }
     }
 }

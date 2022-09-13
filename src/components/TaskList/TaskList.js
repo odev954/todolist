@@ -18,7 +18,7 @@ function TaskList()
             container.setAttribute('id', 'todolist');
             this.list.forEach(function(item) {
                 //TODO: add styles to render
-                container.appendChild(item.render(container.getAttribute('id'), ''));
+                container.append(item.render(container.getAttribute('id'), ''));
             });
 
             container.classList.add(...classList); //style component
