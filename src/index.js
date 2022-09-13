@@ -1,13 +1,13 @@
 function main()
 {
-    container = document.getElementById('mainPanel');
-
-    conatiner.appendChild(TaskStatusButton().render(
+    let container = document.getElementById('test');
+    let btn = TaskStatusButton().render(
         {
-            ongoing: '',
-            done: ''
+            ongoing: ["mono"],
+            done: ["mini"]
         }
-    ));
+    )
+    container.append(btn);
 }
 
 main()
