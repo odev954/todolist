@@ -17,7 +17,7 @@ function Task(description, title, due)
             //set content
             if(this.due instanceof Date)
             {
-                due.textContent = this.due.toDateString();
+                due.textContent = "Due: ".concat(this.due.toDateString());
             }
             title.textContent = this.title;
             description.textContent = this.description;
