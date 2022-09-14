@@ -4,47 +4,35 @@ function Task(description, title, due)
         description: description,
         title: title,
         due: due,
+        components: {},
         render: function (parentElementId, classList)
         {
             let container = document.createElement('div');
-            let title = document.createElement('h2');
-            let description = document.createElement('p');
-            let due = document.createElement('p');
+            let title = TextField(text=this.title);
+            let description = TextField(text=this.description);
+            let due = TextField(this.due instanceof Date ?  
+                "Due: ".concat(this.due.toDateString()) : '');
             let statusButton = TaskStatusButton();
 
             container.classList.add(...classList); //style component
             
-            //set content
-            if(this.due instanceof Date)
-            {
-                due.textContent = "Due: ".concat(this.due.toDateString());
-            }
-            title.textContent = this.title;
-            description.textContent = this.description;
+            container.append(
+                title.render('h2'), 
+                description.render(),
+                due.render(),
+                statusButton.render(
+                    {
+                        ongoing: ["status","negative", "text"],
+                        done: ["status","positive", "text"],
+                    }
+                )
+            );
 
-            title.setAttribute('contenteditable', 'true');
-            description.setAttribute('contenteditable', 'true');
-            due.setAttribute('contenteditable', 'true');
-
-            title.addEventListener("input", (e) => {
-                this.title = e.target.innerHTML;
-            }, false);
-            description.addEventListener("input", (e) => {
-                this.description = e.target.innerHTML;
-            }, false);
-            due.addEventListener("input", (e) => {
-                this.due = e.target.innerHTML;
-            }, false);
+            this.components.title = title;
+            this.components.description = description;
+            this.components.due = due;
+            this.components.status = statusButton;
             
-            container.append(title);
-            container.append(description);
-            container.append(due);
-            container.append(statusButton.render(
-                {
-                    ongoing: ["status","negative", "text"],
-                    done: ["status","positive", "text"],
-                }
-            ));
             document.getElementById(parentElementId).append(container);
         }
     }
