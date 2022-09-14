@@ -25,6 +25,16 @@ function Task(description, title, due)
             title.setAttribute('contenteditable', 'true');
             description.setAttribute('contenteditable', 'true');
             due.setAttribute('contenteditable', 'true');
+
+            title.addEventListener("input", (e) => {
+                this.title = e.target.innerHTML;
+            }, false);
+            description.addEventListener("input", () => {
+                this.description = e.target.innerHTML;
+            }, false);
+            due.addEventListener("input", () => {
+                this.due = e.target.innerHTML;
+            }, false);
             
             container.append(title);
             container.append(description);
