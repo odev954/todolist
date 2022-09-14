@@ -1,13 +1,9 @@
 function main()
 {
     let container = document.getElementById('test');
-    let btn = TaskStatusButton().render(
-        {
-            ongoing: ["status","negative", "text"],
-            done: ["status","positive", "text"],
-        }
-    )
-    container.append(btn);
+    let test = Task('testing this shit', 'test', new Date(Date.now()))
+            .render(container.id, []);
+    //container.append(test);
 }
 
 main()
