@@ -29,10 +29,10 @@ function Task(description, title, due)
             title.addEventListener("input", (e) => {
                 this.title = e.target.innerHTML;
             }, false);
-            description.addEventListener("input", () => {
+            description.addEventListener("input", (e) => {
                 this.description = e.target.innerHTML;
             }, false);
-            due.addEventListener("input", () => {
+            due.addEventListener("input", (e) => {
                 this.due = e.target.innerHTML;
             }, false);
             
