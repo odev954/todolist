@@ -21,6 +21,10 @@ function Task(description, title, due)
             }
             title.textContent = this.title;
             description.textContent = this.description;
+
+            title.setAttribute('contenteditable', 'true');
+            description.setAttribute('contenteditable', 'true');
+            due.setAttribute('contenteditable', 'true');
             
             container.append(title);
             container.append(description);
