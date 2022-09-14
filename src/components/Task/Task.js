@@ -25,7 +25,12 @@ function Task(description, title, due)
             container.append(title);
             container.append(description);
             container.append(due);
-            container.append(statusButton);
+            container.append(statusButton.render(
+                {
+                    ongoing: ["status","negative", "text"],
+                    done: ["status","positive", "text"],
+                }
+            ));
             document.getElementById(parentElementId).append(container);
         }
     }
