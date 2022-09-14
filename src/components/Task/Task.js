@@ -1,4 +1,4 @@
-function Task(description, title, due, completed) 
+function Task(description, title, due) 
 {
     return {
         description: description,
