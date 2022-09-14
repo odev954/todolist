@@ -3,24 +3,29 @@
     padding: .5em;
 	width: auto;
 	height: auto;
-	border-radius: 20px;
-	border-width: 5px;
+	border-radius: 2em;
+	border-width: .25em;
 	border-style: solid;
 	display: flex;
 	align-self: center;
     background-color: white;
 }
 
+.status:hover
+{
+    background-color: rgb(229, 229, 229);
+}
+
 .status.positive
 {
-	border-color: green;
-    color: green;
+	border-color: rgb(9, 145, 9);
+	color: rgb(9, 145, 9);
 }
 
 .status.negative
 {
-	border-color: red;
-    color: red;
+	border-color: rgb(233, 23, 23);
+	color: rgb(233, 23, 23);
 }
 
 .status.text {
