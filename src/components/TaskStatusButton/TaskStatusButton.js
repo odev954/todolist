@@ -11,6 +11,8 @@ function TaskStatusButton()
             button.addEventListener('click', this.click);
             button.classList.add(...classList); //style component
 
+            button.textContent = 'mark as done';
+
             return button;
         },
         click: function() {
@@ -22,6 +24,8 @@ function TaskStatusButton()
 
             this.classList = ''; //clear styles
             this.classList.add(...classList);
+
+            this.textContent = completed ? 'mark as done' : 'mark as ongoing';
         }
     }
 }
