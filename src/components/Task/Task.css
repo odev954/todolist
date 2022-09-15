@@ -12,6 +12,10 @@
 	align-self: center;
 }
 
+.task-card:hover {
+    margin-bottom: 2em;
+}
+
 .task-card h2 {
     outline: 0px;
     margin: .5em;
