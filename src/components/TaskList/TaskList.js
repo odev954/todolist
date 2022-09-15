@@ -26,7 +26,7 @@ function TaskList()
             this.tasks.forEach(function(item) {
                 let renderedTask = item.task.render(['task-card']);
                 
-                renderedTask.setAttribute('id', 'task'.concat(item.id));
+                renderedTask.setAttribute('id', item.id);
                 container.append(renderedTask);
             });
 
