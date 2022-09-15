@@ -5,7 +5,7 @@ function Task(description, title, due)
         title: title,
         due: due,
         components: {},
-        render: function (parentElementId, classList)
+        render: function (classList)
         {
             let container = document.createElement('div');
             let title = TextField(text=this.title);
@@ -32,8 +32,9 @@ function Task(description, title, due)
             this.components.description = description;
             this.components.due = due;
             this.components.status = statusButton;
+            this.components.container = container;
             
-            document.getElementById(parentElementId).append(container);
+            return this.components.container;
         }
     }
 }
