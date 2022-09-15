@@ -5,7 +5,7 @@ function main()
     let test2 = Task('testing this shit', 'test2', new Date(Date.now()));
     let test3 = Task('testing this shit', 'test3', new Date(Date.now()));
     let list = TaskList();
-
+    let ins = InsertButton(container, list);
     
     container.append(list.render(['cards-grid']));
     
@@ -14,7 +14,7 @@ function main()
     let element = list.add(test3);
     
     container.append(element);
-
+    container.append(ins.render(['insert-btn', 'text']));
 }
 
 main()
