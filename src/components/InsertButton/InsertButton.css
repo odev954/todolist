@@ -13,6 +13,10 @@
     border-color: white;
 }
 
+.insert-btn:hover {
+	background-color: rgba(255, 255, 255, 0.242);
+}
+
 .insert-btn.text {
     margin: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
