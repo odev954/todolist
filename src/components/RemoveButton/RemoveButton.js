@@ -1,4 +1,4 @@
-function InsertButton(listContainer, todoList)
+function RemoveButton(listContainer, todoList)
 {
     return {
         selectedTask: null,
