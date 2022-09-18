@@ -12,9 +12,10 @@ function TaskList()
             return this.render(this.components.container.classList);
         },
         remove: function(id) {
-            this.tasks = this.tasks.filter(function(item) {
-                return item.id !== id;
+            this.tasks = this.tasks.filter((item) => {
+                return item.id != id
             });
+            console.log(this.tasks);
 
             document.getElementById(this.components.container.id)?.remove();
             return this.render(this.components.container.classList);
