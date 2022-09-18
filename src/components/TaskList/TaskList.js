@@ -19,6 +19,16 @@ function TaskList()
             document.getElementById(this.components.container.id)?.remove();
             return this.render(this.components.container.classList);
         },
+        reposition: function(sourceId, destinationId) {
+            let sourcePosition = this.tasks.findIndex((item) => sourceId == item.id);
+            let destinationPosition = this.tasks.findIndex((item) => destinationId == item.id);
+
+            this.tasks.splice(destinationPosition, 0, this.tasks[sourcePosition]);
+            this.tasks.splice(sourcePosition + 1, 1);
+
+            document.getElementById(this.components.container.id)?.remove();
+            return this.render(this.components.container.classList);
+        },
         render: function(classList) {
             let container = document.createElement('div');
 
