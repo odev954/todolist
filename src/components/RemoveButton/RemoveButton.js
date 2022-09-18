@@ -5,23 +5,31 @@ function RemoveButton(listContainer, todoList)
         todoList: todoList,
         listContainer: listContainer,
         components: {},
+        setupClickEvents: function() {
+            for(const child of this.todoList?.components.container.children)
+            {
+                console.log('set ' + child.id);
+                child.addEventListener('click', (event) => {
+                    this.selectedTask = event.target;
+                    console.log(this.selectedTask);
+                });
+            }
+        },
         render: function (classList) {
             let button = document.createElement('button');
 
             button.addEventListener('click', (e) => {
                 if(this.selectedTask)
                 {
+                    console.log(this.selectedTask);
                     listContainer.append(
                         todoList.remove(this.selectedTask.id)
                     );
+                    this.setupClickEvents();
                 }
             });
 
-            this.todoList.components.container.children.forEach((element) => {
-                element.focus((event) => {
-                    this.selectedTask = event.target;
-                });
-            })
+            this.setupClickEvents();
 
             button.classList.add(...classList); //style component
 
