@@ -15,7 +15,6 @@ function TaskList()
             this.tasks = this.tasks.filter((item) => {
                 return item.id != id
             });
-            console.log(this.tasks);
 
             document.getElementById(this.components.container.id)?.remove();
             return this.render(this.components.container.classList);
