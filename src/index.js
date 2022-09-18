@@ -14,9 +14,12 @@ function main()
     list.add(test2);
     let element = list.add(test3);
     
+    
     container.append(element);
     container.append(ins.render(['insert-btn', 'text']));
     container.append(rmv.render(['remove-btn', 'text']));
+    
+    ins.components.button.addEventListener('click', () => rmv.setupClickEvents());
 }
 
 main()
