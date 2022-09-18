@@ -14,6 +14,7 @@ function Task(description, title, due)
                 "Due: ".concat(this.due.toDateString()) : '');
             let statusButton = TaskStatusButton();
 
+            container.setAttribute("draggable", "true");
             container.classList.add(...classList); //style component
             
             container.append(
