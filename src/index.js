@@ -6,6 +6,7 @@ function main()
     let test3 = Task('testing this shit', 'test3', new Date(Date.now()));
     let list = TaskList();
     let ins = InsertButton(container, list);
+    let rmv = RemoveButton(container, list);
     
     container.append(list.render(['cards-grid']));
     
@@ -15,6 +16,7 @@ function main()
     
     container.append(element);
     container.append(ins.render(['insert-btn', 'text']));
+    container.append(rmv.render(['remove-btn', 'text']));
 }
 
 main()
