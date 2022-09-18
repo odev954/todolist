@@ -13,7 +13,6 @@ function InsertButton(listContainer, todoList)
                         Task('Do something...', 'New Task', new Date(Date.now()))
                     )
                 );
-                todoList.components.title.focus();
             });
 
             button.classList.add(...classList); //style component
