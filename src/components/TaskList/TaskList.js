@@ -24,9 +24,10 @@ function TaskList()
         reposition: function(sourceId, destinationId) {
             let sourcePosition = this.tasks.findIndex((item) => sourceId == item.id);
             let destinationPosition = this.tasks.findIndex((item) => destinationId == item.id);
-
-            this.tasks.splice(destinationPosition, 0, this.tasks[sourcePosition]);
-            this.tasks.splice(sourcePosition + 1, 1);
+            let transferedTask = this.tasks[sourcePosition];
+            
+            this.tasks.splice(sourcePosition, 1);
+            this.tasks.splice(destinationPosition, 0, transferedTask);
 
             return this.render(this.components.container.classList);
         },
@@ -68,8 +69,6 @@ function TaskList()
             return this.components.container;
         },
         onTaskDrop: function (event) {
-            console.log("target: " + this.dragSource + 
-            "\ntransferred: " + this.dragTarget);
             const renderedList = this.reposition(this.dragSource, this.dragTarget);
             const parentNode = document.getElementById(this.components.container.id)?.parentNode;
 
