@@ -1,7 +1,7 @@
-function TaskStatusButton()
+function TaskStatusButton(completed)
 {
     return {
-        completed: false,
+        completed: completed,
         components: {},
         styles: {},
         render: function (styles) {

@@ -4,6 +4,7 @@ function Task(description, title, due)
         description: description,
         title: title,
         due: due,
+        completed: false,
         components: {},
         render: function (classList)
         {
@@ -12,7 +13,7 @@ function Task(description, title, due)
             let description = TextField(text=this.description);
             let due = TextField(this.due instanceof Date ?  
                 "Due: ".concat(this.due.toDateString()) : '');
-            let statusButton = TaskStatusButton();
+            let statusButton = TaskStatusButton(completed=this.completed);
 
             container.setAttribute("draggable", "true");
             container.classList.add(...classList); //style component
@@ -29,8 +30,6 @@ function Task(description, title, due)
                 )
             );
 
-            
-
             this.components.title = title;
             this.components.description = description;
             this.components.due = due;
@@ -38,6 +37,12 @@ function Task(description, title, due)
             this.components.container = container;
             
             return this.components.container;
+        },
+        retrieveData: function() {
+            this.description = this.components.description.text;
+            this.due = this.components.due.text;
+            this.title = this.components.title.text;
+            this.completed = this.components.statusButton.completed;
         }
     }
 }

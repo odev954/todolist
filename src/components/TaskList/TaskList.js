@@ -1,10 +1,12 @@
 function TaskList()
 {
+    data = localStorage.getItem('todolist') ? JSON.parse(localStorage.getItem('todolist')) : null;
+
     return {
-        idCounter: 0,
+        idCounter: data ? data.idCounter : 0,
         dragTarget: '',
         dragSource: '',
-        tasks: [],
+        tasks: data ? data.tasks : [],
         components: {},
         add: function(task) {
             this.tasks.push({ id: this.idCounter, task: task });
@@ -74,6 +76,16 @@ function TaskList()
             parentNode.append(renderedList);
             
             event.preventDefault();
+        },
+        save: function () {
+            this.tasks.forEach((item) => {
+                item.task.retrieveData();
+            });
+
+            localStorage.setItem('todolist', JSON.stringify({
+                idCounter: this.idCounter, 
+                tasks: this.tasks
+            }));
         }
     }
 }

@@ -13,7 +13,7 @@ function TextField(text='')
 
             textField.addEventListener("input", (e) => {
                 this.text = e.target.innerHTML;
-            }, false);
+            });
 
             this.components.textField = textField;
 
