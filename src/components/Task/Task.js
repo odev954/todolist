@@ -29,6 +29,8 @@ function Task(description, title, due)
                 )
             );
 
+            
+
             this.components.title = title;
             this.components.description = description;
             this.components.due = due;

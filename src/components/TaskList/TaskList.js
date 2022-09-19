@@ -37,6 +37,15 @@ function TaskList()
                 let renderedTask = item.task.render(['task-card']);
                 
                 renderedTask.setAttribute('id', item.id);
+
+                renderedTask.addEventListener("dragenter", (event, target) => {
+                    this.onTaskDrop(event, target);
+                });
+                
+                renderedTask.addEventListener("dragover", (event, target) => {
+                    this.onTaskDrop(event, target);
+                });
+                
                 container.append(renderedTask);
             });
 
@@ -45,6 +54,13 @@ function TaskList()
             this.components.container = container;
 
             return this.components.container;
+        },
+        onTaskDrop: function (event, target) {
+            const renderedList = this.reposition(event.target.id, target.id);
+
+            this.components.container.parentElement.append(renderedList);
+            
+            event.preventDefault();
         }
     }
 }
