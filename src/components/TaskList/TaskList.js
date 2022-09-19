@@ -46,7 +46,6 @@ function TaskList()
 
                 renderedTask.addEventListener("dragenter", (event) => {
                     this.dragTarget = event.target.id; 
-                    console.log('Drag enter: ' + this.dragTarget); 
                     event.preventDefault();                 
                 });
                 
@@ -55,7 +54,6 @@ function TaskList()
                 });
                 
                 renderedTask.addEventListener("drop", (event) => {
-                    console.log('Drag drop: ' + this.dragTarget);
                     this.onTaskDrop(event);
                 });
                 
