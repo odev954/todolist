@@ -9,7 +9,7 @@ function main()
     let list = TaskList();
     let ins = InsertButton(container, list);
     let rmv = RemoveButton(container, list);
-    
+    let fltr = FilterButton(container, list);
     container.append(list.render(['cards-grid']));
     
     //list.add(test1);
@@ -20,6 +20,7 @@ function main()
     //container.append(element);
     menu.append(ins.render([]));
     menu.append(rmv.render([]));
+    menu.append(fltr.render([]));
     
     ins.components.button.addEventListener('click', () => rmv.setupClickEvents());
 }

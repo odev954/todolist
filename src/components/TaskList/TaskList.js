@@ -35,12 +35,20 @@ function TaskList()
             this.tasks.splice(sourcePosition, 1);
             this.tasks.splice(destinationPosition, 0, transferedTask);
             this.save();
-
+            
             return this.render(this.components.container.classList);
         },
-        render: function(classList) {
+        filter: function(filterFunction) {
+            document.getElementById(this.components.container.id)?.remove();
+            return this.render(
+                this.components.container.classList,
+                providedTasks=this.tasks.filter((item) => filterFunction(item.task))
+            );
+        },
+        render: function(classList, providedTasks=null) {
             let container = document.createElement('div');
-
+            let displayedTasks = [];
+            
             if(this.firstRender)
             {
                 this.tasks = this.tasksData.map(item => {
@@ -56,8 +64,10 @@ function TaskList()
                 this.firstRender = false;
             }
 
+            displayedTasks = providedTasks ? providedTasks : this.tasks;
+
             container.setAttribute('id', 'todolist');
-            this.tasks.forEach((item) => {
+            displayedTasks.forEach((item) => {
                 let renderedTask = item.task.render(['task-card']);
                 
                 renderedTask.setAttribute('id', item.id);
@@ -115,7 +125,7 @@ function TaskList()
                     }
                 }
             });
-            
+
             localStorage.setItem('todolist', JSON.stringify({
                     idCounter: this.idCounter, 
                     tasks: this.tasksData
