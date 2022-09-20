@@ -98,24 +98,29 @@ function TaskList()
             event.preventDefault();
         },
         save: function () {
+            this.tasksData = [];
+
             this.tasks.forEach((item) => {
                 item.task.retrieveData();
             });
 
-            localStorage.setItem('todolist', JSON.stringify({
-                idCounter: this.idCounter, 
-                tasks: this.tasks.map((item) => { 
-                    return { 
-                        id: item.id,
-                        task: {
-                            description: item.task.description,
-                            title: item.task.title,
-                            due: item.task.due,
-                            completed: item.task.completed,
-                        }
+            this.tasksData = this.tasks.map((item) => { 
+                return { 
+                    id: item.id,
+                    task: {
+                        description: item.task.description,
+                        title: item.task.title,
+                        due: item.task.due,
+                        completed: item.task.completed,
                     }
+                }
+            });
+            
+            localStorage.setItem('todolist', JSON.stringify({
+                    idCounter: this.idCounter, 
+                    tasks: this.tasksData
                 })
-            }));
+            );
         }
     }
 }

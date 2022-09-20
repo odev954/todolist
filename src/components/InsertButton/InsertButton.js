@@ -10,7 +10,11 @@ function InsertButton(listContainer, todoList)
             button.addEventListener('click', (e) => {
                 listContainer.append(
                     todoList.add(
-                        Task('Do something...', 'New Task', new Date(Date.now()))
+                        Task('Do something...', 
+                            'New Task', 
+                            new Date(Date.now()), 
+                            completed=false, 
+                            taskList=todoList)
                     )
                 );
             });
