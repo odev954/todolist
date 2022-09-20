@@ -1,5 +1,6 @@
 function main()
 {
+    localStorage.clear();
     let container = document.getElementById('test');
     let test1 = Task('testing this shit', 'test1', new Date(Date.now()));
     let test2 = Task('testing this shit', 'test2', new Date(Date.now()));
