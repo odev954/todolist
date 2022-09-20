@@ -18,6 +18,10 @@ function Task(description, title, due, completed=false, taskList=null)
 
             container.setAttribute("draggable", "true");
             container.classList.add(...classList); //style component
+
+            container.addEventListener('click', () => {
+                this.components.container.classList.add('pressed');
+            });
             
             container.append(
                 title.render('h2'), 

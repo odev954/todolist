@@ -1,11 +1,12 @@
 .task-card {
+    margin: 2em;
     padding: .5em;
 	width: auto;
 	height: auto ;
 	border-radius: 20px;
 	background-color: white;
 	border-color: white;
-	border-width: 5px;
+	border-width: .25em;
 	border-style: solid;
 	display: flex;
     flex-direction: column;
@@ -13,9 +14,13 @@
     cursor: move;
 }
 
-.task-card:focus 
+.task-card:hover 
 {
-    border-color:rgb(0, 170, 255);
+    border-color:rgb(0, 39, 110);
+}
+
+.task-card.pressed {
+    border-color:rgb(0, 9, 26);
 }
 
 .task-card h2 {
