@@ -1,7 +1,7 @@
-function FilterButton(listContainer, todoList)
+function DeleteButton(listContainer, todoList, deleteOnlyCompleted=false)
 {
     return {
-        switchToCompleted: true,
+        deleteOnlyCompleted: deleteOnlyCompleted,
         todoList: todoList,
         listContainer: listContainer,
         components: {},
@@ -10,16 +10,13 @@ function FilterButton(listContainer, todoList)
 
             button.addEventListener('click', (e) => {
                 listContainer.append(
-                    todoList.filter((task) => task.completed === this.switchToCompleted)
+                    todoList.delete((task) => this.deleteOnlyCompleted ? task.completed : true)
                 );
-                this.switchToCompleted = !this.switchToCompleted;
-                this.components.button.textContent = this.switchToCompleted ? 
-                    'Show completed tasks' : 'Show ongoing tasks';
             });
 
             button.classList.add(...classList); //style component
 
-            button.textContent = this.switchToCompleted ? 'Show completed tasks' : 'Show ongoing tasks';
+            button.textContent = 'Delete ' + (this.deleteOnlyCompleted ? 'completed' : 'all') + ' tasks';
 
             this.components.button = button;
 

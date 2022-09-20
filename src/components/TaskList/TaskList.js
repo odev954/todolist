@@ -45,6 +45,14 @@ function TaskList()
                 providedTasks=this.tasks.filter((item) => filterFunction(item.task))
             );
         },
+        delete: function(checkFunction) {
+            this.tasks = this.tasks.filter((item) => !checkFunction(item.task));
+            
+            document.getElementById(this.components.container.id)?.remove();
+            this.save();
+            
+            return this.render(this.components.container.classList);
+        },
         render: function(classList, providedTasks=null) {
             let container = document.createElement('div');
             let displayedTasks = [];
