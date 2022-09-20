@@ -6,13 +6,16 @@ function TaskList()
         idCounter: data ? data.idCounter : 0,
         dragTarget: '',
         dragSource: '',
-        tasks: data ? data.tasks : [],
+        tasksData: data ? data.tasks : [],
+        firstRender: true,
+        tasks: [],
         components: {},
         add: function(task) {
             this.tasks.push({ id: this.idCounter, task: task });
             this.idCounter++;
 
             document.getElementById(this.components.container.id)?.remove();
+            this.save();
             return this.render(this.components.container.classList);
         },
         remove: function(id) {
@@ -21,6 +24,7 @@ function TaskList()
             });
 
             document.getElementById(this.components.container.id)?.remove();
+            this.save();
             return this.render(this.components.container.classList);
         },
         reposition: function(sourceId, destinationId) {
@@ -30,11 +34,27 @@ function TaskList()
             
             this.tasks.splice(sourcePosition, 1);
             this.tasks.splice(destinationPosition, 0, transferedTask);
+            this.save();
 
             return this.render(this.components.container.classList);
         },
         render: function(classList) {
             let container = document.createElement('div');
+
+            if(this.firstRender)
+            {
+                this.tasks = this.tasksData.map(item => {
+                    return { 
+                        id: item.id, 
+                        task: Task(item.task.description, 
+                            item.task.title, 
+                            new Date(item.task.due), 
+                            completed=item.task.completed,
+                            taskList=this)
+                    }
+                });
+                this.firstRender = false;
+            }
 
             container.setAttribute('id', 'todolist');
             this.tasks.forEach((item) => {
@@ -84,7 +104,17 @@ function TaskList()
 
             localStorage.setItem('todolist', JSON.stringify({
                 idCounter: this.idCounter, 
-                tasks: this.tasks
+                tasks: this.tasks.map((item) => { 
+                    return { 
+                        id: item.id,
+                        task: {
+                            description: item.task.description,
+                            title: item.task.title,
+                            due: item.task.due,
+                            completed: item.task.completed,
+                        }
+                    }
+                })
             }));
         }
     }
